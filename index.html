@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Car | معرض عبد العزيز بدر لتأجير السيارات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+        .price-badge { direction: ltr; unicode-bidi: embed; font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50 border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <span class="text-2xl font-black text-blue-900 tracking-wider">CRAZY CAR</span>
+                <span class="text-xs text-gray-500 hidden sm:inline border-r border-gray-300 pr-3">معرض عبد العزيز بدر</span>
+            </div>
+            <div>
+                <a href="https://wa.me/201095520500" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> واتساب
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80');">
+        <div class="text-center px-6 max-w-4xl mx-auto mt-16 text-white">
+            <span class="bg-blue-600/30 border border-blue-400/40 text-blue-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-6 shadow-sm">الجديد شديد 🔥 - معرض Crazy Car</span>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">معرض <span class="text-blue-400">Crazy Car</span> لتأجير أحدث السيارات</h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">سيارات زفاف فخمة، وتشكيلة مميزة للإيجار والسياحة بأعلى مستوى من الشياكة والأداء.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#fleet" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition">تصفح الأسطول</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="fleet" class="py-24 px-6 container mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-black mb-3 text-gray-900">أسطول <span class="text-blue-600">السيارات المتاح</span></h2>
+            <p class="text-gray-500">سيارات حقيقية وجاهزة لمناسباتكم السعيدة وخدماتكم</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+                <div class="h-56 bg-gray-100"><img src="https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mt-3 mb-1 text-gray-900">Dodge Charger (زفاف)</h3>
+                    <div class="flex justify-between items-center mb-6 text-sm font-semibold border-t border-gray-100 pt-4">
+                        <span class="text-gray-500">سعر الزفاف:</span>
+                        <span class="price-badge text-blue-600 font-black text-xl">1500 <span class="text-xs text-gray-500">جنية</span></span>
+                    </div>
+                    <button onclick="openBookingModal('Dodge Charger (زفاف)', '1500')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition">احجز الآن (مقدم 50%)</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+                <div class="h-56 bg-gray-100"><img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c351?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mt-3 mb-1 text-gray-900">سيارة سيدان مجهزة</h3>
+                    <div class="flex justify-between items-center mb-6 text-sm font-semibold border-t border-gray-100 pt-4">
+                        <span class="text-gray-500">الإيجار اليومي:</span>
+                        <span class="price-badge text-blue-600 font-black text-xl">800 <span class="text-xs text-gray-500">جنية</span></span>
+                    </div>
+                    <button onclick="openBookingModal('سيارة سيدان مجهزة', '800')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition">احجز الآن (مقدم 50%)</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+                <div class="h-56 bg-gray-100"><img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mt-3 mb-1 text-gray-900">الأسطول المتميز</h3>
+                    <div class="flex justify-between items-center mb-6 text-sm font-semibold border-t border-gray-100 pt-4">
+                        <span class="text-gray-500">يبدأ من:</span>
+                        <span class="price-badge text-blue-600 font-black text-xl">1000 <span class="text-xs text-gray-500">جنية</span></span>
+                    </div>
+                    <button onclick="openBookingModal('الأسطول المتميز - Crazy Car', '1000')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition">احجز الآن (مقدم 50%)</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="bookingModal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border border-gray-200 w-full max-w-lg rounded-3xl p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBookingModal()" class="absolute top-5 left-5 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
+            <h3 class="text-2xl font-black mb-1 text-blue-900">تأكيد حجز السيارة</h3>
+            <p id="selectedCarName" class="text-gray-500 text-sm mb-2 font-semibold"></p>
+            
+            <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 mb-6 flex justify-between items-center">
+                <span class="text-xs text-gray-500 font-bold">المقدم المطلوب (50%):</span>
+                <span id="modalCarPrice" class="price-badge text-blue-600 font-black text-lg">0 <span class="text-xs text-gray-500">جنية</span></span>
+            </div>
+
+            <form onsubmit="handleBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1.5">الاسم الكامل</label>
+                    <input type="text" id="clientName" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1.5">رقم الهاتف (واتساب)</label>
+                    <input type="tel" id="clientPhone" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1.5">نوع الخدمة</label>
+                    <select id="rentalType" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900">
+                        <option value="زفاف / مناسبة">زفاف / مناسبة (بالسائق)</option>
+                        <option value="إيجار سياحي">إيجار سياحي / شهري</option>
+                    </select>
+                </div>
+                
+                <div class="bg-red-50 border border-red-200 p-4 rounded-xl text-xs space-y-2">
+                    <p class="font-bold text-red-700">💳 فودافون كاش لتحويل المقدم:</p>
+                    <p class="text-red-800 font-semibold">حول على الرقم: <span dir="ltr" class="bg-white px-2 py-0.5 rounded border border-red-300 font-black">01095520500</span></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1.5">رقم المحفظة المحول منها</label>
+                    <input type="tel" id="senderWallet" required class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1.5">إرفاق سكرين شوت التحويل</label>
+                    <input type="file" id="transferReceipt" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:font-semibold file:bg-blue-50 file:text-blue-700">
+                </div>
+                
+                <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl transition shadow-md mt-2">إتمام الحجز وإرسال الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbysadv86DPeZV2EiZjXgsF-FnI-3XGMS5yVCmZq7tytAqHAA5WOnQ_I4YbLQVgw-npLUg/exec";
+        let currentCar = "";
+        let currentPrice = "";
+
+        function openBookingModal(carName, carPrice) {
+            currentCar = carName;
+            currentPrice = carPrice;
+            document.getElementById('selectedCarName').innerText = "السيارة: " + carName;
+            let deposit = Math.round(parseFloat(carPrice) * 0.5);
+            document.getElementById('modalCarPrice').innerHTML = deposit + ' <span class="text-xs text-gray-500">جنية</span>';
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function handleBooking(event) {
+            event.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "جاري إرسال الحجز...";
+            btn.disabled = true;
+
+            const fileInput = document.getElementById('transferReceipt');
+            const reader = new FileReader();
+            
+            if (fileInput.files && fileInput.files[0]) {
+                reader.readAsDataURL(fileInput.files[0]);
+                reader.onload = function (e) {
+                    const bookingData = {
+                        action: "addBooking",
+                        id: 'CRZ-' + Math.floor(1000 + Math.random() * 9000),
+                        car: currentCar,
+                        price: Math.round(parseFloat(currentPrice) * 0.5),
+                        name: document.getElementById('clientName').value,
+                        phone: document.getElementById('clientPhone').value,
+                        type: document.getElementById('rentalType').value,
+                        wallet: document.getElementById('senderWallet').value,
+                        receipt: e.target.result,
+                        status: 'قيد المراجعة ⏳'
+                    };
+
+                    fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(bookingData)
+                    }).then(() => {
+                        alert('تم إرسال الحجز بنجاح وسيظهر في لوحة التحكم وفي الشيت فوراً!');
+                        closeBookingModal();
+                        event.target.reset();
+                        btn.innerText = "إتمام الحجز وإرسال الطلب";
+                        btn.disabled = false;
+                    }).catch(err => {
+                        alert('حدث خطأ، تأكد من الاتصال بالإنترنت.');
+                        btn.innerText = "إتمام الحجز وإرسال الطلب";
+                        btn.disabled = false;
+                    });
+                };
+            }
+        }
+    </script>
+</body>
+</html>
