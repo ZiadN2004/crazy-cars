@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Car | معرض عبد العزيز بدر لتأجير السيارات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+        body { font-family: 'Cairo', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 2s ease-in-out;
+            transform: scale(1.05);
+            z-index: 1;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        .card-img-transition {
+            transition: opacity 0.4s ease-in-out, transform 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+
+    <!-- شريط التنقل العلوي -->
+    <header class="bg-white/90 dark:bg-gray-900/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50 border-b border-gray-200 dark:border-gray-800 shadow-xl">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <span class="text-2xl font-black text-blue-600 dark:text-blue-500 tracking-wider">CRAZY CAR</span>
+                <span class="text-xs text-gray-500 dark:text-gray-400 hidden sm:inline border-r border-gray-300 dark:border-gray-700 pr-3">معرض عبد العزيز بدر</span>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-4">
+                <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-gray-600 dark:text-gray-300">
+                    <a href="#fleet" class="hover:text-blue-600 dark:hover:text-blue-400 transition">الأسطول</a>
+                    <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">من نحن</a>
+                    <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">اتصل بنا</a>
+                </nav>
+
+                <button onclick="toggleTheme()" class="bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-yellow-400 p-2.5 rounded-xl transition shadow-md flex items-center justify-center w-10 h-10" title="تغيير المظهر">
+                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                </button>
+
+                <a href="https://wa.me/201095520500" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> <span class="hidden sm:inline">واتساب المعرض</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- الواجهة الترحيبية المتحركة -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16">
+        <div id="heroSlider" class="absolute inset-0"></div>
+        <div class="absolute inset-0 bg-black/40 dark:bg-gray-950/60 z-10"></div>
+
+        <div class="text-center px-6 max-w-4xl mx-auto relative z-20 text-white drop-shadow-md">
+            <span class="bg-blue-600/40 border border-blue-400/40 text-blue-200 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-6 shadow-md backdrop-blur-md">الجديد شديد 🔥 - هيبة وقوة بلا حدود</span>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight drop-shadow-lg">معرض <span class="text-blue-400 drop-shadow-[0_0_25px_rgba(59,130,246,0.8)]">Crazy Car</span> للأداء العالي</h1>
+            <p class="text-lg md:text-xl text-gray-100 mb-8 max-w-2xl mx-auto font-bold drop-shadow">سيارات زفاف تفرض سيطرتها على الطريق، وأسطول فاخر يجمع بين الشياكة والسرعة المطلقة.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#fleet" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-blue-600/40 transition transform hover:-translate-y-0.5">تصفح الأسطول الملكي</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأسطول التفاعلي -->
+    <section id="fleet" class="py-24 px-6 container mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-blue-600 dark:text-blue-500 font-bold text-sm tracking-widest uppercase mb-2 block">أفخم سيارات الزفاف والمناسبات</span>
+            <h2 class="text-3xl md:text-5xl font-black mb-4">معرض <span class="text-blue-600 dark:text-blue-500">السيارات الملكية</span></h2>
+            <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto text-sm sm:text-base">تصفح ألبوم الصور التفاعلي لكل سيارة بالضغط على الكارت للمعاينة الفاخرة بحجم كامل.</p>
+        </div>
+
+        <!-- شبكة السيارات (تتولد تلقائياً عبر JS) -->
+        <div id="fleetGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-900/50 border-y border-gray-200 dark:border-gray-900">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 dark:text-blue-500 font-bold text-sm tracking-widest uppercase mb-2 block">قصة نجاح وتميز</span>
+                <h2 class="text-3xl md:text-4xl font-black">من نحن في <span class="text-blue-600 dark:text-blue-500">Crazy Car</span></h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                    <p>معرض <strong class="text-gray-900 dark:text-white">عبد العزيز بدر لتأجير السيارات (Crazy Car)</strong> هو وجهتك الأولى لكل من يبحث عن الهيبة، الأداء العالي، والمظهر الاستثنائي في مصر.</p>
+                    <p>نحن متخصصون في توفير أحدث سيارات الزفاف والمناسبات التي تفرض حضورها بكل قوة على الطريق، إلى جانب الأسطول السياحي والعائلي المجهز بأعلى وسائل الراحة والأمان.</p>
+                    <p>هدفنا هو تقديم خدمة احترافية، أسعار تنافسية، وسهولة تامة في الحجز والدفع لضمان راحة عملائنا في كل مناسبة.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-2xl relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-600/10 rounded-full blur-2xl group-hover:bg-blue-600/20 transition"></div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-trophy text-blue-600 dark:text-blue-500"></i> لماذا تختار Crazy Car؟
+                    </h3>
+                    <ul class="space-y-4 text-sm text-gray-600 dark:text-gray-300 font-semibold">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-600 dark:text-blue-500"></i> أسطول سيارات حديث ونظيف بالكامل</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-600 dark:text-blue-500"></i> التزام تام بالمواعيد وسهولة في الحجز</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-600 dark:text-blue-500"></i> أسعار خاصة ومقدم بسيط عبر فودافون كاش</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-blue-600 dark:text-blue-500"></i> دعم فني وخدمة عملاء طوال أيام الأسبوع</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم اتصل بنا -->
+    <section id="contact" class="py-20 container mx-auto px-6 max-w-4xl">
+        <div class="text-center mb-12">
+            <span class="text-blue-600 dark:text-blue-500 font-bold text-sm tracking-widest uppercase mb-2 block">تواصل معنا الآن</span>
+            <h2 class="text-3xl md:text-4xl font-black">خطك المباشر مع <span class="text-blue-600 dark:text-blue-500">إدارة المعرض</span></h2>
+            <p class="text-gray-500 dark:text-gray-400 mt-2">نحن في خدمتك للإجابة على استفساراتك وتأكيد حجوزاتك فوراً</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="https://wa.me/201095520500" target="_blank" class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-emerald-500 p-8 rounded-3xl text-center transition group shadow-xl">
+                <div class="w-14 h-14 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-1">الواتساب الرسمي</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mb-4" dir="ltr">+20 109 552 0500</p>
+                <span class="text-xs text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">متاح الآن للدردشة</span>
+            </a>
+
+            <a href="tel:01095520500" class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-blue-500 p-8 rounded-3xl text-center transition group shadow-xl">
+                <div class="w-14 h-14 bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-1">اتصال هاتفي</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mb-4" dir="ltr">01095520500</p>
+                <span class="text-xs text-blue-600 dark:text-blue-400 font-bold bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">خدمة العملاء</span>
+            </a>
+
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-purple-500 p-8 rounded-3xl text-center transition group shadow-xl">
+                <div class="w-14 h-14 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-1">محفظة فودافون كاش</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mb-4" dir="ltr">01095520500</p>
+                <span class="text-xs text-purple-600 dark:text-purple-400 font-bold bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">للتحويل والحجز</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox العرض المكبر -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden flex-col justify-between items-center p-4 sm:p-6 transition-all duration-300">
+        <div class="w-full max-w-6xl flex justify-between items-center z-20 py-2 border-b border-white/10">
+            <div>
+                <h4 id="lightboxTitle" class="text-white text-lg sm:text-2xl font-black">اسم السيارة</h4>
+                <span id="lightboxCounter" class="text-blue-400 text-xs sm:text-sm font-semibold">صورة 1</span>
+            </div>
+            <button onclick="closeLightbox()" class="text-gray-300 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition w-11 h-11 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="relative w-full max-w-5xl flex-1 flex items-center justify-center my-4 overflow-hidden">
+            <button onclick="prevLightboxImage()" class="absolute right-2 sm:right-6 z-30 bg-black/60 hover:bg-blue-600 text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full backdrop-blur-md border border-white/20 flex items-center justify-center text-xl transition transform hover:scale-110 shadow-2xl">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div class="w-full h-full flex items-center justify-center p-2">
+                <img id="lightboxImg" src="" alt="معاينة السيارة" class="max-h-[75vh] max-w-full object-contain rounded-2xl shadow-2xl transition-all duration-300 transform scale-100 opacity-100">
+            </div>
+
+            <button onclick="nextLightboxImage()" class="absolute left-2 sm:left-6 z-30 bg-black/60 hover:bg-blue-600 text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full backdrop-blur-md border border-white/20 flex items-center justify-center text-xl transition transform hover:scale-110 shadow-2xl">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <div id="lightboxDots" class="flex gap-2 justify-center items-center py-2 overflow-x-auto max-w-full z-20"></div>
+    </div>
+
+    <!-- التذييل (Footer) -->
+    <footer class="bg-white dark:bg-gray-950 py-8 text-center text-gray-500 text-sm border-t border-gray-200 dark:border-gray-900 space-y-2">
+        <p>جميع الحقوق محفوظة © 2026 معرض Crazy Car (عبد العزيز بدر)</p>
+        <p class="text-xs text-blue-600 dark:text-blue-400 font-bold">تم التصميم والتطوير بواسطة: زياد اليمني</p>
+    </footer>
+
+    <script>
+        // تبديل المظهر
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = "fa-solid fa-sun text-lg text-amber-500";
+            } else {
+                html.classList.add('dark');
+                icon.className = "fa-solid fa-moon text-lg text-yellow-400";
+            }
+        }
+
+        // Hero Slideshow
+        window.addEventListener('DOMContentLoaded', () => {
+            const sliderContainer = document.getElementById('heroSlider');
+            const totalImages = 15; 
+            let currentSlide = 0;
+            let slides = [];
+
+            for (let i = 1; i <= totalImages; i++) {
+                const div = document.createElement('div');
+                div.className = `hero-slide ${i === 1 ? 'active' : ''}`;
+                div.style.backgroundImage = `url('images2/c3w${(i%7)+1}.jpeg')`;
+                sliderContainer.appendChild(div);
+                slides.push(div);
+            }
+
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % totalImages;
+                slides[currentSlide].classList.add('active');
+            }, 4000);
+
+            renderFleetCards();
+        });
+
+        /* ==================== توليد صور الأسطول المتنوع من images (1 إلى 30) ==================== */
+        let diverseFleetImages = [];
+        for (let i = 1; i <= 30; i++) {
+            diverseFleetImages.push(`images/${i}.jpeg`);
+        }
+
+        /* ==================== بيانات السيارات المحدثة ==================== */
+        const fleetCars = [
+            {
+                title: "كرايسلر 300 - بيضاء",
+                tag: "الملكية الفاخرة",
+                desc: "أناقة هادئة باللون الأبيض الساحر، مثالية لليلة العمر.",
+                images: [
+                    "images2/c3w1.jpeg", "images2/c3w2.jpeg", "images2/c3w3.jpeg", 
+                    "images2/c3w4.jpeg", "images2/c3w5.jpeg", "images2/c3w6.jpeg", "images2/c3w7.jpeg"
+                ]
+            },
+            {
+                title: "كرايسلر 300 - سوداء",
+                tag: "فخامة رسمية",
+                desc: "حضور طاغي وهيبة مطلقة باللون الأسود الملكي.",
+                images: ["images2/c3b1.jpeg"]
+            },
+            {
+                title: "مرسيدس C-Class - بيضاء",
+                tag: "شبابية وعصرية",
+                desc: "تصميم عصري وجذاب يناسب كافة المناسبات الخاصة.",
+                images: [
+                    "images2/mcw1.jpeg", "images2/mcw2.jpeg", "images2/mcw3.jpeg", 
+                    "images2/mcw4.jpeg", "images2/mcw5.jpeg", "images2/mcw6.jpeg"
+                ]
+            },
+            {
+                title: "مرسيدس C-Class - سوداء",
+                tag: "أناقة هادئة",
+                desc: "لمسات رياضية فخمة بلون أسود جذاب.",
+                images: ["images2/mcb1.jpeg"]
+            },
+            {
+                title: "مرسيدس E-Class - سوداء",
+                tag: "الأكثر طلباً 🔥",
+                desc: "الفخامة والراحة المطلقة مع خطوط تصميم رياضية وقوية.",
+                images: [
+                    "images2/meb1.jpeg", "images2/meb2.jpeg", "images2/meb3.jpeg", 
+                    "images2/meb4.jpeg", "images2/meb5.jpeg", "images2/meb6.jpeg", "images2/meb7.jpeg"
+                ]
+            },
+            {
+                title: "مرسيدس S-Class - بيضاء",
+                tag: "قمة الفخامة والرفاهية",
+                desc: "تجربة ركوب استثنائية وأعلى درجات الراحة الملكية.",
+                images: ["images2/msw1.jpeg", "images2/msw2.jpeg"]
+            },
+            {
+                title: "أسطول السيارات المتنوع",
+                tag: "تشكيلة ضخمة",
+                desc: "مجموعة واسعة ومميزة من الصور الإضافية من ملف images لتلبية كافة الأذواق.",
+                images: diverseFleetImages
+            }
+        ];
+
+        let cardIndices = new Array(fleetCars.length).fill(0);
+
+        // إنشاء الكروت تلقائياً
+        function renderFleetCards() {
+            const grid = document.getElementById('fleetGrid');
+            grid.innerHTML = '';
+
+            fleetCars.forEach((car, idx) => {
+                const cardHTML = `
+                    <div onclick="openLightbox(${idx})" class="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-all duration-500 group cursor-pointer relative flex flex-col hover:-translate-y-1">
+                        <div class="relative h-72 overflow-hidden bg-gray-950">
+                            <img id="card-img-${idx}" src="${car.images[0]}" alt="${car.title}" class="w-full h-full object-cover card-img-transition group-hover:scale-105" onerror="this.src='https://via.placeholder.com/600x400?text=Crazy+Car'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                            
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-blue-600/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full border border-blue-400/30 shadow-lg">${car.tag}</span>
+                            </div>
+                            <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
+                                <i class="fa-solid fa-camera text-blue-400"></i> <span id="card-counter-${idx}">1/${car.images.length}</span>
+                            </div>
+
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-blue-900/30 backdrop-blur-[2px]">
+                                <span class="bg-white/90 text-gray-900 dark:bg-gray-900 dark:text-white px-5 py-2.5 rounded-2xl font-bold text-sm shadow-2xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                                    <i class="fa-solid fa-expand text-blue-500"></i> عرض ألبوم الصور
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-2xl font-black mb-2 group-hover:text-blue-500 transition-colors">${car.title}</h3>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed font-medium">${car.desc}</p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center text-xs font-bold text-blue-600 dark:text-blue-400">
+                                <span>انقر لتكبير ومعاينة الألبوم (${car.images.length} صور)</span>
+                                <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHTML;
+            });
+        }
+
+        // التبديل التلقائي للصور داخل الكروت كل 3.5 ثانية
+        setInterval(() => {
+            fleetCars.forEach((car, carIdx) => {
+                if(car.images.length <= 1) return;
+                
+                cardIndices[carIdx] = (cardIndices[carIdx] + 1) % car.images.length;
+                const imgElem = document.getElementById(`card-img-${carIdx}`);
+                const counterElem = document.getElementById(`card-counter-${carIdx}`);
+                
+                if (imgElem) {
+                    imgElem.style.opacity = '0.4';
+                    setTimeout(() => {
+                        imgElem.src = car.images[cardIndices[carIdx]];
+                        imgElem.style.opacity = '1';
+                    }, 200);
+                }
+                if (counterElem) {
+                    counterElem.innerText = `${cardIndices[carIdx] + 1}/${car.images.length}`;
+                }
+            });
+        }, 3500);
+
+        /* ==================== Lightbox المعاينة المكبرة ==================== */
+        let activeCarIdx = 0;
+        let activeImageIdx = 0;
+
+        function openLightbox(carIdx) {
+            activeCarIdx = carIdx;
+            activeImageIdx = cardIndices[carIdx];
+            updateLightboxContent();
+            
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        function updateLightboxContent() {
+            const car = fleetCars[activeCarIdx];
+            const imgElem = document.getElementById('lightboxImg');
+            
+            imgElem.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                imgElem.src = car.images[activeImageIdx];
+                document.getElementById('lightboxTitle').innerText = car.title;
+                document.getElementById('lightboxCounter').innerText = `صورة ${activeImageIdx + 1} من ${car.images.length}`;
+                
+                renderLightboxDots(car);
+
+                imgElem.classList.remove('scale-95', 'opacity-0');
+                imgElem.classList.add('scale-100', 'opacity-100');
+            }, 150);
+        }
+
+        function nextLightboxImage() {
+            const car = fleetCars[activeCarIdx];
+            activeImageIdx = (activeImageIdx + 1) % car.images.length;
+            updateLightboxContent();
+        }
+
+        function prevLightboxImage() {
+            const car = fleetCars[activeCarIdx];
+            activeImageIdx = (activeImageIdx - 1 + car.images.length) % car.images.length;
+            updateLightboxContent();
+        }
+
+        function setLightboxImage(idx) {
+            activeImageIdx = idx;
+            updateLightboxContent();
+        }
+
+        function renderLightboxDots(car) {
+            const dotsContainer = document.getElementById('lightboxDots');
+            dotsContainer.innerHTML = '';
+            car.images.forEach((imgUrl, idx) => {
+                const btn = document.createElement('button');
+                btn.onclick = (e) => { e.stopPropagation(); setLightboxImage(idx); };
+                if (idx === activeImageIdx) {
+                    btn.className = "w-12 h-12 rounded-xl border-2 border-blue-500 overflow-hidden scale-110 transition shadow-lg flex-shrink-0";
+                } else {
+                    btn.className = "w-9 h-9 rounded-lg opacity-40 hover:opacity-100 transition overflow-hidden flex-shrink-0";
+                }
+                btn.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover">`;
+                dotsContainer.appendChild(btn);
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('lightboxModal');
+            if (!modal.classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') nextLightboxImage();
+                else if (e.key === 'ArrowLeft') prevLightboxImage();
+                else if (e.key === 'Escape') closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
